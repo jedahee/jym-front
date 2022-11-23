@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap');
+
+// UTILITIES
+@import 'sass/utilities/variables';
+
+// BASE
+@import 'sass/base/reset';
+@import 'sass/base/typo';
+
+// COMPONENTS
+@import 'sass/components/icons';
+@import 'sass/components/input';
+@import 'sass/components/buttons';
+@import 'sass/components/popup';
+@import 'sass/components/aside';
+@import 'sass/components/menu_link';
+@import 'sass/components/star';
+@import 'sass/components/profile-photo';
+@import 'sass/components/calendar';
+@import 'sass/components/event-element';
+
+// VIEWS
+@import 'sass/views/login';
+@import 'sass/views/gallery';
+@import 'sass/views/events';
+@import 'sass/views/calendar';
+@import 'sass/views/profile';
+@import 'sass/views/logout';
+
+// LAYOUT

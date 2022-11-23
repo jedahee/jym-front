@@ -1,0 +1,35 @@
+// RESET STYLES FOR ALL SCSSS FIELS
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    list-style: none;
+    text-decoration: none;
+    text-emphasis: none;
+    scroll-behavior: smooth;
+}
+
+*::-webkit-scrollbar {
+    width: 5px;
+    background-color: $white;
+    border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: $gray;
+    border-radius: 5px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+html, body {
+    height: 100%;
+
+}

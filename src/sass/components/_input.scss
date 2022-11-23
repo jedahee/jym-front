@@ -1,0 +1,22 @@
+.input-container {
+    width: 100%;
+    border: 2px solid $red_secondary;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+
+    & > div {
+        margin: 1rem;
+    }
+
+    & > input {
+        width: 86%;
+        outline: none;
+        background-color: transparent;
+        border: none;
+        border-radius: 15px;
+        font-size: 1.25em;
+        padding-right: 1rem;
+        letter-spacing: 2px;
+    }
+}

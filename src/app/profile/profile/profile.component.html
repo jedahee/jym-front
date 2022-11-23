@@ -1,0 +1,35 @@
+<article class="article-profile">
+    <div class="aside-container">
+        <app-aside></app-aside>
+    </div>
+    <span #error_msg_ref class="popup error-msg"></span>
+    <span #success_msg_ref class="popup success-msg"></span>
+
+    <section class="art-profile__sect">
+        <section class="profile__sect1">
+            <form class="photo">
+                <img class="photo__img" #photoProfile src="{{url}}/{{path}}">
+                <label for="file-profile" class="photo__btn">Subir foto</label>
+                <input type="file" id="file-profile" (change)="setPhoto(user.id, $event)" observeFiles accept="image/x-png,image/jpg,image/jpeg">
+            </form>
+            <section>
+                <textarea [(ngModel)]="user.name">{{user.name}}</textarea>
+                <button (click)="updateName(user.id, user.name)" [disabled]="user.name == ''" class="btn btn-primary">
+                    Guardar cambios
+                </button>
+            </section>
+        </section>
+        
+        <section class="profile__sect2">
+            <h2>Tus fotos</h2>
+            <div class="old_pic_container">
+                <form class="photo" *ngFor="let ph of photos">
+                    <a [download]="ph" [href]="url+'/images/user/'+ (user.id == 1 ? 'jesus/' : 'macarena/') + ph" target="_blank" class="red-circle"><div class="icon download-white-icon"></div></a>
+                    <img src="{{url}}{{user_path_photo}}{{ph}}" class="photo__img">
+                    <input (click)="setPhotoOld(user.id, 'public/images/user/', ph.toString())" type="submit" value="Elegir foto" class="photo__btn">
+                </form>
+            </div>
+        </section>
+    </section>
+    
+</article>

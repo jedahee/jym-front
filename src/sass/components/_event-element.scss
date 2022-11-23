@@ -1,0 +1,36 @@
+.event {
+    background-color: $blue;
+    padding: .5rem 1rem;
+    text-align: center;
+    color: $white;
+    font-weight: 400;
+    letter-spacing: .5px;
+    cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.event.completed {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.event.completed > p {
+    margin: .5rem 1rem;
+}
+
+.event.completed > .bg-icon {
+    display: flex;
+    height: 2.2rem;
+    width: 2.5rem;
+    justify-content: center;
+    align-items: center;
+    background-color: $red_primary;
+
+    .icon {
+        width: 20px;
+    }
+}

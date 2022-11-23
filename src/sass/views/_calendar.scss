@@ -1,0 +1,175 @@
+.article-calendar {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    .aside-container {
+        height: 100vh;
+        width: 20%;
+    }
+
+    .calendar-container {
+        width: 100%;
+        padding: 2rem;
+        position: relative;
+
+        .events-container.hidden {
+            transform: translateY(100%);
+        }
+
+        .events-container {
+            min-height: 400px;
+            padding: 2rem;
+            column-gap: 1rem;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index: 99;
+            background-color: $black;
+            transition: transform .35s .1s ease-in-out;
+            display: grid;
+            grid-template-areas: "events details"
+                                 "buttons buttons";
+            justify-items: flex-start;            
+                                 
+            .events {
+                grid-area: events;
+                width: 100%;
+                max-width: 650px;
+                
+                & > section {
+                    max-height: 190px;
+                    overflow-y: auto;
+
+                }
+
+                h1 {
+                    color: $white;
+                    font-size: 2em;
+                    text-align: center;
+                    margin: 1rem 0;
+                    
+                }
+
+                hr {
+                    border: 1px solid $blue;
+                    margin: .5rem 0;
+                }
+
+                .event-c {
+                    width: 100%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: flex-start;
+
+                    .event {
+                        margin: .5rem 0;
+                        margin-right: 1rem;
+                    }
+
+                    .plus-icon {
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .details {
+                grid-area: details;
+                width: 100%;
+
+                h1 {
+                    color: $white;
+                    font-size: 2em;
+                    text-align: center;
+                    margin: 1rem 0;
+                }
+
+                .details-text {
+                    resize: none;
+                    width: 100%;
+                    border-radius: 10px;
+                    border: 2px solid $blue;
+                    padding: .7rem 1.2rem;
+                    background-color: transparent;
+                    color: $white;
+                    min-height: 150px;
+                }
+
+                .emojis {
+                    display: flex;
+                    align-items: center;
+                    margin-top: 1.5rem;
+
+                    & > span {
+                        color: $white;
+                        margin-right: 1rem;
+                    }
+
+                    & > .meh-icon {
+                        margin: 0 .5rem;
+                    }
+
+                    .icon {
+                        cursor: pointer;
+                        transition: background-color .2s ease;
+                        border-radius: 50%;
+                    }
+
+                    .smile-icon:hover {
+                        background-color: $success_green;
+                    }
+
+                    .meh-icon:hover {
+                        background-color: #efe222;
+                    }
+
+                    .sad-icon:hover {
+                        background-color: $red_secondary;
+                    }
+                }
+            }
+
+            .buttons {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                width: 100%;
+                grid-area: buttons;
+                max-height: 100px;
+                align-self: flex-end;
+
+                button {
+                    width: 100%;
+                }
+
+                button:nth-child(1) {
+                    margin-right: 1rem;
+                }
+
+                button:nth-child(1):hover {
+                    background-color: $blue;
+                }
+
+                button:nth-child(2) {
+                    margin-left: 1rem;
+                }
+
+            }
+        }
+    }
+}
+
+.fill-actual-day {
+    border: 2px solid $red_primary;
+}
+
+.disable-day {
+    pointer-events: none;
+    opacity: .65;
+}

@@ -1,0 +1,23 @@
+<span #error_msg_ref class="popup error-msg">{{error_msg}}</span>
+<main class="main-login">
+    <article class="main-login__art main-login__art1">
+        <div class="bg-login"></div>
+        <img src="../../../assets/icon/heart3d.svg" alt=" <3 ">
+    </article>
+    
+    <article class="main-login__art main-login__art2">
+        <h1>Iniciar sesión</h1>
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+            <div class="input-container">
+                <div class="icon user-solid-icon"></div>
+                <input required [(ngModel)]="user.name" maxlength="30" name="name" #name="ngModel" type="text" id="name" class="input" placeholder="Usuario">
+            </div>
+            <div class="input-container">
+                <div class="icon passw-solid-icon"></div>
+                <input required [(ngModel)]="user.password" maxlength="50" name="password" #password="ngModel" id="password" type="password" class="input" placeholder="Contraseña">
+            </div>
+
+            <input [disabled]="!loginForm.valid" class="btn btn-primary" type="submit" value="Entrar">
+        </form>
+    </article>
+</main>

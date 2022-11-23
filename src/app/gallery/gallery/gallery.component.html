@@ -1,0 +1,42 @@
+<article class="article-gallery">
+    <div class="aside-container">
+        <app-aside></app-aside>
+    </div>
+    <span #error_msg_ref class="popup error-msg">{{error_msg}}</span>
+    
+    <section class="pictures-container">
+        <section class="photo" *ngFor="let photo of pictures" style="background-image: url({{url}}{{photo.path}})">
+            <div class="icon trash-icon" (click)="removePhoto(photo.id)"></div>
+
+            <section class="container-stats">
+                <div class="date-container">
+                    <span>Fecha de publicación</span>
+                    <hr>
+                    <span class="date">{{photo.created_at|date:'dd-MM-yyyy'}}</span>    
+                </div>
+                <div class="container-stats-photo">
+                    <div>
+                        <img class="user-img" *ngIf="user.id == 2" src="{{url}}/{{user.path}}">
+                        <img class="user-img" *ngIf="user.id != 2" src="{{url}}/{{otherUserPathImg}}">
+                        <form class="container-stars" [ngClass]="user.id != 2 ? 'container-disabled' : ''">
+                            <app-star [mStars]="'m'" [photo_id]="photo.id" [user_id]="user.id"></app-star>
+                        </form>
+                    </div>
+                    <div>
+                        <img class="user-img" *ngIf="user.id == 1" src="{{url}}/{{user.path}}">
+                        <img class="user-img" *ngIf="user.id != 1" src="{{url}}/{{otherUserPathImg}}">
+                        <form class="container-stars" [ngClass]="user.id != 1 ? 'container-disabled' : ''">
+                            <app-star [mStars]="'y'" [photo_id]="photo.id" [user_id]="user.id"></app-star>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </section>
+</article>
+
+<form class="form-file">
+    <input type="file" id="input-file" (change)="uploadPicture($event)" observeFiles accept="image/x-png,image/jpg,image/jpeg">
+    <label for="input-file"></label>
+    <div class="icon upload-icon"></div>
+</form>
