@@ -20,5 +20,25 @@ export class CalendarService {
     return this.http.post<any>(this.url + 'getDetailsOfMonth', data);
   }
 
+  addDetail(details: string, dayId: number, date:string) {
+    let data = {
+      details: details,
+      dayId: dayId,
+      date: date
+    }
+
+    return this.http.post<any>(this.url + 'addDetail', data);
+  }
+
+  editDetail(details: string, dayId: number, date:string, id: number) {
+    let data = {
+      details: details,
+      dayId: dayId,
+      date: date
+    }
+
+    return this.http.put<any>(this.url + 'editDetail/' + id, data);
+  }
+
   
 }

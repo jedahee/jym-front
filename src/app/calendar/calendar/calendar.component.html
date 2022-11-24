@@ -16,12 +16,12 @@
                     <div class="icon arrow-icon"></div>
                 </div>
             </div>
-            <select class="year-select" [(ngModel)]="modelYear">
+            <select class="year-select" [(ngModel)]="modelYear" (change)="getDetailsOfMonth(month_no+1, modelYear)">
                 <option *ngFor="let year of years_available" [selected]="actualYear == modelYear" [value]="year" [disabled]="month_no > actualMonth_no || month_no < INIT_MONTH">{{year}}</option>
             </select>
         </header>
         <div class="body__calendar">
-            <div *ngFor="let day of days_of_month" #dayContainer (click)="toggleEventContainer('open')" class="day-container {{ (modelYear == actualYear && month_no == actualMonth_no && day > actualDay) && 'disable-day'}} {{ (modelYear == INIT_YEAR && month_no == INIT_MONTH && day < INIT_DAY) && 'disable-day'}} {{modelYear == actualYear && month_no == actualMonth_no && day == actualDay && 'fill-actual-day'}}">
+            <div *ngFor="let day of days_of_month" #dayContainer (click)="setDateSelected(day)" class="day-container {{ (modelYear == actualYear && month_no == actualMonth_no && day > actualDay) && 'disable-day'}} {{ (modelYear == INIT_YEAR && month_no == INIT_MONTH && day < INIT_DAY) && 'disable-day'}} {{modelYear == actualYear && month_no == actualMonth_no && day == actualDay && 'fill-actual-day'}}">
                 <span class="day-no">{{day}}</span>
                 <div *ngIf="checkDay(day)[0] == 3" class='emoji-day happy'></div>
                 <div *ngIf="checkDay(day)[0] == 2" class='emoji-day regular'></div>
@@ -172,16 +172,16 @@
             </div>
             <div class="details">
                 <h1>Observación</h1>
-                <textarea class="details-text" id="" placeholder="Escribe lo que ha pasado hoy..."></textarea>
+                <textarea class="details-text" id="" placeholder="Escribe lo que ha pasado hoy..." [(ngModel)]="details_text_selected"></textarea>
                 <div class="emojis">
                     <span>El día fue...</span>
-                    <div class="icon smile-icon"></div>
-                    <div class="icon meh-icon"></div>
-                    <div class="icon sad-icon"></div>
+                    <div class="icon smile-icon {{ emoji_selected == 3 && 'active' }}" (click)="changeEmojiSelected(3)"></div>
+                    <div class="icon meh-icon {{ emoji_selected == 2 && 'active' }}" (click)="changeEmojiSelected(2)"></div>
+                    <div class="icon sad-icon {{ emoji_selected == 1 && 'active' }}" (click)="changeEmojiSelected(1)"></div>
                 </div>
             </div>
             <div class="buttons">
-                <button class="btn_soft btn-soft-primary">Guardar</button>
+                <button class="btn_soft btn-soft-primary" [disabled]="emoji_selected == -1" (click)="addOrEditDetail()">Guardar</button>
                 <button class="btn_soft btn-soft-cancel" (click)="toggleEventContainer('cancel')">Cancelar</button>
             </div>
         </section>

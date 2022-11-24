@@ -121,15 +121,15 @@
                         border-radius: 50%;
                     }
 
-                    .smile-icon:hover {
+                    .smile-icon:hover, .smile-icon.active {
                         background-color: $success_green;
                     }
 
-                    .meh-icon:hover {
+                    .meh-icon:hover, .meh-icon.active {
                         background-color: #efe222;
                     }
 
-                    .sad-icon:hover {
+                    .sad-icon:hover, .sad-icon.active {
                         background-color: $red_secondary;
                     }
                 }
