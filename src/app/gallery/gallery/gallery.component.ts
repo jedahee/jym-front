@@ -62,7 +62,7 @@ export class GalleryComponent implements OnInit {
 
       this.getPictures();
     }, error => {
-      if (error.status == 401){
+      if (error.status == 401 || error.message.toLowerCase() == "token has expired"){
         this.anim_service.popupAnim(this.error_msg_ref, "Tienes que iniciar sesión de nuevo");
         setTimeout(()=>{
           this.rt.navigate(["/"])

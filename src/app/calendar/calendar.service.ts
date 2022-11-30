@@ -40,5 +40,6 @@ export class CalendarService {
     return this.http.put<any>(this.url + 'editDetail/' + id, data);
   }
 
+
   
 }

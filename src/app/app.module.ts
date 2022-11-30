@@ -33,7 +33,8 @@ import { AsideModule } from './aside/aside.module';
     ProfileModule,
     EventsModule,
     AsideModule,
-    ProfileModule
+    ProfileModule,
+    EventsModule
   ],
   providers: [
       {

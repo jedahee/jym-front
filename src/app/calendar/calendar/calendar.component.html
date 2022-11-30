@@ -123,51 +123,7 @@
             <div class="events">
                 <h1>Eventos</h1>
                 <section>
-                    <div class="event-c">
-                        <p class="event">Sexo</p>
-                        <p class="event">Salir</p>
-                        <p class="event">Cine</p>
-                        <p class="event">Piso</p>
-                        <p class="event">Coche</p>
-                        <p class="event">Campo putas</p>
-                        <p class="event">Pillar a tu madre</p>
-                        <p class="event">Coca juntos</p>
-    
-                        <div class="icon plus-icon"></div>
-                    </div>
-                    <hr>
-                    <div class="event-c">
-                        <div class="event completed">
-                            <p>Sexo</p>
-                            <div class="bg-icon">
-                                <div class="icon check-icon"></div>
-                            </div>
-                        </div>
-                        <div class="event completed">
-                            <p>Salir</p>
-                            <div class="bg-icon">
-                                <div class="icon check-icon"></div>
-                            </div>
-                        </div>
-                        <div class="event completed">
-                            <p>Paseo</p>
-                            <div class="bg-icon">
-                                <div class="icon check-icon"></div>
-                            </div>
-                        </div>
-                        <div class="event completed">
-                            <p>Xdxdxd nosequeponer</p>
-                            <div class="bg-icon">
-                                <div class="icon check-icon"></div>
-                            </div>
-                        </div>
-                        <div class="event completed">
-                            <p>Hola wenas</p>
-                            <div class="bg-icon">
-                                <div class="icon check-icon"></div>
-                            </div>
-                        </div>
-                    </div>
+                    <app-events [events]="events" [eventsCompleted]="eventsCompletedToShow" (addCalendarEvent)="addCalendarEvent($event)"></app-events>
                 </section>
             </div>
             <div class="details">

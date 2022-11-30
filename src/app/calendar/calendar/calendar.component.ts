@@ -4,6 +4,7 @@ import { ViewChild, ElementRef } from '@angular/core';
 import { AnimService } from 'src/app/services/anim.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { CalendarService } from '../calendar.service';
+import { EventsService } from 'src/app/events/events.service';
 import { User } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
 
@@ -31,12 +32,16 @@ export class CalendarComponent implements OnInit {
   public actualYear: number = -1;
   public modelYear: number = -1;
   public months: string[] = [];
+  public eventsCompleted: any[] = [];
+  public eventsCompletedFiltered: any[] = [];
+  public eventsCompletedToShow: any = []; 
   public years_available: number[] = [];
   public INIT_YEAR: number = 2021;
   public INIT_MONTH: number = 6;
   public INIT_DAY: number = 14;
   public days_of_month: number[] = [];
   public days_detailed: number[] = [];
+  public events: any = []; 
   public details: any[] = [];
   public emoji_selected: number = -1;
   public date_selected: string = "";
@@ -45,7 +50,7 @@ export class CalendarComponent implements OnInit {
   public createOrUpdate = 0; // 0 -> create | 1-> update
 
 
-  constructor(private calendar_service: CalendarService, private auth_service: AuthService, private rt: Router, private anim_service: AnimService) { 
+  constructor(private e_service: EventsService, private calendar_service: CalendarService, private auth_service: AuthService, private rt: Router, private anim_service: AnimService) { 
     this.months = [
       "Enero",
       "Febrero",
@@ -87,7 +92,7 @@ export class CalendarComponent implements OnInit {
       this.getDetailsOfMonth(this.actualMonth_no+1, this.actualYear);
 
     }, error => {
-      if (error.status == 401){
+      if (error.status == 401 || error.error.message?.toLowerCase() == "token has expired"){
         this.anim_service.popupAnim(this.error_msg_ref, "Tienes que iniciar sesión de nuevo");
         setTimeout(()=>{
           this.rt.navigate(["/"])
@@ -95,9 +100,26 @@ export class CalendarComponent implements OnInit {
       }
     });
 
+    this.getEvents();
+    this.getCalendarEvents();
   }
 
   ngOnInit(): void {
+  }
+
+  getEvents() {
+    this.e_service.getEvents().subscribe(data => {
+      this.events = data.events;
+    }, error => {
+      if (error.status == 401 || error.error.message?.toLowerCase() == "token has expired"){
+        this.anim_service.popupAnim(this.error_msg_ref, "Tienes que iniciar sesión de nuevo");
+        setTimeout(()=>{
+          this.rt.navigate(["/"])
+        }, 3000);
+      } else {
+        this.anim_service.popupAnim(this.error_msg_ref, error.msg || error.message);
+      }
+    });   
   }
 
   setDateSelected(day: number) {
@@ -112,6 +134,42 @@ export class CalendarComponent implements OnInit {
     });
     this.date_selected = day + "/" + (this.month_no+1) + "/" + this.modelYear;
     this.toggleEventContainer('open')
+    this.filterEventsCompletedArr();
+  }
+
+  filterEventsCompletedArr() {
+    this.eventsCompletedFiltered = this.eventsCompleted.filter(e => e.date == this.date_selected);
+
+    this.events.forEach((ev: any) => {
+      var i = 0;
+      this.eventsCompleted.forEach((ev_c: any) => {
+        if (ev.id == ev_c.eventId) {
+          this.eventsCompleted.splice(i, 1);
+          this.eventsCompletedToShow.push(ev);
+          
+        }
+        i++;
+      });
+    });
+
+  }
+
+  addCalendarEvent(id: number) {
+    this.e_service.addCalendarEvent(id, this.date_selected).subscribe(data => {
+
+      this.eventsCompleted.push(data.calendar_event);
+      this.filterEventsCompletedArr();
+
+    }, error => {
+      if (error.status == 401 || error.error.message?.toLowerCase() == "token has expired"){
+        this.anim_service.popupAnim(this.error_msg_ref, "Tienes que iniciar sesión de nuevo");
+        setTimeout(()=>{
+          this.rt.navigate(["/"])
+        }, 3000);
+      } else {
+        this.anim_service.popupAnim(this.error_msg_ref, error.error.msg || error.message);
+      }
+    })
   }
 
   toggleEventContainer(action: string) {
@@ -170,6 +228,19 @@ export class CalendarComponent implements OnInit {
     this.emoji_selected = this.emoji_selected == id ? -1 : id;
   }
 
+  getCalendarEvents() {
+    this.e_service.getCalendarEvents().subscribe(data => {
+      this.eventsCompleted = data.calendar_events;
+    }, error => {
+      if (error.status == 401 || error.error.message?.toLowerCase() == "token has expired"){
+        this.anim_service.popupAnim(this.error_msg_ref, "Tienes que iniciar sesión de nuevo");
+        setTimeout(()=>{
+          this.rt.navigate(["/"])
+        }, 3000);
+      }
+    });
+  }
+
   getDetailsOfMonth(month: number, year: number) {
     this.calendar_service.getDetailsOfMonth(month, year).subscribe(data => {
       this.details = data;
@@ -180,7 +251,7 @@ export class CalendarComponent implements OnInit {
       });
       
     }, error => {
-      if (error.status == 401){
+      if (error.status == 401 || error.error.message?.toLowerCase() == "token has expired"){
         this.anim_service.popupAnim(this.error_msg_ref, "Tienes que iniciar sesión de nuevo");
         setTimeout(()=>{
           this.rt.navigate(["/"])
@@ -226,7 +297,7 @@ export class CalendarComponent implements OnInit {
         this.id_selected = -1;
         this.toggleEventContainer('cancel');
       }, error => {
-        if (error.status == 401){
+        if (error.status == 401 || error.error.message?.toLowerCase() == "token has expired"){
           this.anim_service.popupAnim(this.error_msg_ref, "Tienes que iniciar sesión de nuevo");
           setTimeout(()=>{
             this.rt.navigate(["/"])
@@ -251,7 +322,7 @@ export class CalendarComponent implements OnInit {
         this.emoji_selected = -1;
         this.toggleEventContainer('cancel');
       }, error => {
-        if (error.status == 401){
+        if (error.status == 401 || error.error.message?.toLowerCase() == "token has expired"){
           this.anim_service.popupAnim(this.error_msg_ref, "Tienes que iniciar sesión de nuevo");
           setTimeout(()=>{
             this.rt.navigate(["/"])

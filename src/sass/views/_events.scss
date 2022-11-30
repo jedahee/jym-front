@@ -1,4 +1,45 @@
-.aside-container {
-    height: 100vh;
-    width: 20%;
+.event-c .plus-icon {
+    transition: transform .2s ease;
+}
+.event-c {
+    position: relative; 
+
+    .plus-icon:hover {
+        transform: scale(.8);
+    }
+}
+
+.event:not(.completed) {
+    display: flex;
+    position: relative;
+    justify-content: center; 
+    align-items: center;
+    min-width: 25%;
+    padding-right: 7px;
+    transition: all 1s ease;
+
+    .trash-container {
+        padding: .4rem;
+        background-color: $red_primary;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        right: 0;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .2s ease, transform .2s ease;
+        
+        .trash-icon {
+            width: 22px;
+        }
+    }
+}
+
+.event:hover {
+        
+    .trash-container {
+        opacity: 1;
+        pointer-events: all;
+    }
 }

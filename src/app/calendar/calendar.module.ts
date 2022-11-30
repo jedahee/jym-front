@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AsideModule } from '../aside/aside.module';
 import { CalendarComponent } from './calendar/calendar.component';
 import { FormsModule } from '@angular/forms';
-
+import { EventsModule } from '../events/events.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AsideModule,
-    FormsModule
+    FormsModule,
+    EventsModule
   ]
 })
 export class CalendarModule { }
