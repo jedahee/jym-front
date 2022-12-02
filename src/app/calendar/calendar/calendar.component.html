@@ -123,7 +123,7 @@
             <div class="events">
                 <h1>Eventos</h1>
                 <section>
-                    <app-events [events]="events" [eventsCompleted]="eventsCompletedToShow" (addCalendarEvent)="addCalendarEvent($event)"></app-events>
+                    <app-events [events]="events" [date_selected]="date_selected" [eventsCompleted]="eventsCompletedToShow" (delCalendarEventEmitter)="delCalendarEvent($event)" (addCalendarEvent)="addCalendarEvent($event)" (addEventEmitter)="addEvent($event)"></app-events>
                 </section>
             </div>
             <div class="details">

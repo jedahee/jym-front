@@ -16,9 +16,9 @@
 <hr>
 <div class="event-c">
 
-    <div class="event completed" *ngFor="let event_c of eventsCompleted" (click)="delCalendarEvent(event_c.id)">
+    <div class="event completed {{event_c.date != date_selected && 'hidden'}}" *ngFor="let event_c of eventsCompleted" (click)="delCalendarEvent(event_c.id)">
         
-        <p>{{event_c.name}}</p>
+        <p>{{event_c.event.name}}</p>
         <div class="bg-icon">
             <div class="icon check-icon"></div>
         </div>

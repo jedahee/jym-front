@@ -19,7 +19,7 @@
     transition: all 1s ease;
 
     .trash-container {
-        padding: .4rem;
+        padding: .3rem;
         background-color: $red_primary;
         display: flex;
         justify-content: center;
@@ -31,7 +31,7 @@
         transition: opacity .2s ease, transform .2s ease;
         
         .trash-icon {
-            width: 22px;
+            width: 20px;
         }
     }
 }

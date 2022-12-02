@@ -13,9 +13,13 @@ import { environment } from 'src/environments/environment';
 })
 export class EventsComponent implements OnInit {
   @Output() addCalendarEvent = new EventEmitter<any>();
+  @Output() addEventEmitter = new EventEmitter<any>();
+  @Output() delCalendarEventEmitter = new EventEmitter<any>();
+  
   @ViewChild('error_msg_ref') error_msg_ref: ElementRef = <ElementRef>{};
   @ViewChild('success_msg_ref') success_msg_ref: ElementRef = <ElementRef>{};
   @Input('eventsCompleted') eventsCompleted: any = [];
+  @Input('date_selected') date_selected: string = "";
   @Input('events') events: any = [];
 
   public error_msg: String = "";
@@ -23,17 +27,14 @@ export class EventsComponent implements OnInit {
   public url: String = environment.URL;
   public isAddingEvent: boolean = false;
   public eventNameToAdd: String = "";
+  public isDeletedAnyEvent: boolean = false;
 
   constructor(private e_service: EventsService, private auth_service: AuthService, private rt: Router, private anim_service: AnimService) {
-    
   }
 
   selectEvent(e: any, id: number) {
-    console.log(e);
-    
     if (!e.srcElement.classList.contains("trash-container") && !e.srcElement.classList.contains("trash-icon"))    
       this.addCalendarEvent.emit(id);
-    
   }
 
 
@@ -44,9 +45,12 @@ export class EventsComponent implements OnInit {
   addEvent(e:any) {
     if (e.key.toLowerCase() == 'enter' && e.code.toLowerCase() == 'enter') {
       this.e_service.addEvent(this.eventNameToAdd).subscribe(data => {
-        this.events.push(data.event);
+        if (this.isDeletedAnyEvent)
+          this.events.push(data.event);
         this.setIsAddingEvent(false);
         this.eventNameToAdd = "";
+        this.addEventEmitter.emit(data.event);
+
       }, error => {
         if (error.status == 401 || error.error.message?.toLowerCase() == "token has expired"){
           this.anim_service.popupAnim(this.error_msg_ref, "Tienes que iniciar sesión de nuevo");
@@ -63,9 +67,13 @@ export class EventsComponent implements OnInit {
   delEvent(id: number) {
     this.e_service.delEvent(id).subscribe(data => {
       this.anim_service.popupAnim(this.success_msg_ref, data.msg || data.message);
-      this.eventsCompleted = this.eventsCompleted.filter((event:any) => {return event.id != id});
+      this.eventsCompleted = this.eventsCompleted.filter((event:any) => {return event.event.id != id});
+      let eventsIds:any[] = [];
+      this.eventsCompleted.forEach((e:any) => {eventsIds.push(e.id)})
+      this.delCalendarEventEmitter.emit(eventsIds);
+      this.isDeletedAnyEvent = true;
       this.events = this.events.filter((event:any) => {return event.id != id});
-
+      
     }, error => {
       if (error.status == 401 || error.error.message?.toLowerCase() == "token has expired"){
         this.anim_service.popupAnim(this.error_msg_ref, "Tienes que iniciar sesión de nuevo");
@@ -78,11 +86,12 @@ export class EventsComponent implements OnInit {
     });
   }
 
-  // ¡ARREGLAR! - Borra por el id del evento y no del calendar_event
   delCalendarEvent(id: number) {
     this.e_service.delCalendarEvent(id).subscribe(data => {
-      console.log(data);
       this.eventsCompleted = this.eventsCompleted.filter((ev_c: any)=>{ return ev_c.id != id });
+      let eventsIds:any[] = [];
+      this.eventsCompleted.forEach((e:any) => {eventsIds.push(e.id)})
+      this.delCalendarEventEmitter.emit(eventsIds);
     }, error => {
       if (error.status == 401 || error.error.message?.toLowerCase() == "token has expired"){
         this.anim_service.popupAnim(this.error_msg_ref, "Tienes que iniciar sesión de nuevo");
@@ -96,6 +105,7 @@ export class EventsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
 }

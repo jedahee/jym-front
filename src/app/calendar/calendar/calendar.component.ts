@@ -33,7 +33,7 @@ export class CalendarComponent implements OnInit {
   public modelYear: number = -1;
   public months: string[] = [];
   public eventsCompleted: any[] = [];
-  public eventsCompletedFiltered: any[] = [];
+  //public eventsCompletedFiltered: any[] = [];
   public eventsCompletedToShow: any = []; 
   public years_available: number[] = [];
   public INIT_YEAR: number = 2021;
@@ -107,6 +107,11 @@ export class CalendarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  addEvent(event:any) {
+    this.events.push(event);
+    this.filterEventsCompletedArr();
+  }
+
   getEvents() {
     this.e_service.getEvents().subscribe(data => {
       this.events = data.events;
@@ -138,26 +143,32 @@ export class CalendarComponent implements OnInit {
   }
 
   filterEventsCompletedArr() {
-    this.eventsCompletedFiltered = this.eventsCompleted.filter(e => e.date == this.date_selected);
-
+    //this.eventsCompletedFiltered = this.eventsCompleted.filter(e => e.date == this.date_selected);
+    let i:any = [];
     this.events.forEach((ev: any) => {
-      var i = 0;
       this.eventsCompleted.forEach((ev_c: any) => {
         if (ev.id == ev_c.eventId) {
-          this.eventsCompleted.splice(i, 1);
-          this.eventsCompletedToShow.push(ev);
-          
+          let obj = {
+            id:ev_c.id,
+            date: ev_c.date,
+            event: ev
+          }
+
+          i.push(ev_c.id)
+          this.eventsCompletedToShow.push(obj);
+        
         }
-        i++;
+        
       });
     });
-
+    this.eventsCompleted=this.eventsCompleted.filter((e:any)=>{return !i.includes(e.id)})
   }
 
   addCalendarEvent(id: number) {
     this.e_service.addCalendarEvent(id, this.date_selected).subscribe(data => {
 
       this.eventsCompleted.push(data.calendar_event);
+      console.log(this.eventsCompleted);
       this.filterEventsCompletedArr();
 
     }, error => {
@@ -170,6 +181,12 @@ export class CalendarComponent implements OnInit {
         this.anim_service.popupAnim(this.error_msg_ref, error.error.msg || error.message);
       }
     })
+  }
+
+  delCalendarEvent(ids: any[]) {
+    this.eventsCompletedToShow=this.eventsCompletedToShow.filter((e:any)=>{
+      return ids.includes(e.id); 
+    });
   }
 
   toggleEventContainer(action: string) {

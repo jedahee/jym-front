@@ -1,0 +1,156 @@
+.article-stats {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    .aside-container {
+        height: 100vh;
+        width: 20%;
+    }
+
+    .stats-container {
+        width: 100%;
+        padding: 2rem;
+        overflow: auto;
+
+        .div-1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+
+            & > h1 {
+                font-size: 3em;
+                font-weight: 500;
+                color: $black;
+                margin-bottom: 1.2rem;
+            }
+
+            .events-stats {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                overflow-y: auto;
+                max-height: 320px;
+                
+                .event-stat {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    margin: 1rem 0;
+
+                    .event-name-stat {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        min-width: 150px;
+                        padding: .4rem .8rem;
+                        border-radius: 10px;
+                        background-color: $blue;
+                        color: $white;
+                    }
+
+                    .bar {
+                        margin: 0 1.5rem;
+                        border-radius: 10px;
+                        height: 15px;
+                        border: 2px solid $soft_blue;
+                        width: 80%;
+                        position: relative;
+                        overflow: hidden;
+                    }
+
+                    .punct {
+                        font-size: 1.35em;
+                        margin-right: .4rem;
+                        width: calc(100% - 80% - 200px);
+                    }
+
+                    .punct-por{
+                        font-weight: 500;
+                    }
+                }
+            }
+
+        }
+
+        .div-2 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+
+            & > h1 {
+                color: $black;
+                font-size: 3em;
+                font-weight: 500;
+                margin-bottom: 1.2rem;
+            }
+
+            .days-stats {
+                width: 100%;
+                
+                .day-stat {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    margin: 1rem 0;
+
+                    .icon {
+                        width: 48px;
+                        height: 48px;
+                        border-radius: 50%;
+                    }
+
+                    .sad-icon {
+                        background-color: $red_primary;
+                    }
+                    
+                    .meh-icon {
+                        background-color: #efe222;
+                    }
+
+                    .smile-icon {
+                        background-color: $success_green;
+                    }
+
+                    .big-bar {
+                        margin: 0 1.5rem;
+                        border-radius: 10px;
+                        height: 50px;
+                        border: 2px solid $soft_blue;
+                        width: 80%;
+                        position: relative;
+                        overflow: hidden;
+
+
+                    }
+
+                    .punct {
+                        font-size: 1.35em;
+                        margin-right: .4rem;
+                        width: calc(100% - 80% - 200px);
+                    }
+
+                    .punct-por{
+                        font-weight: 500;
+                    }
+                }
+            }
+
+        }
+        .pg-bar {
+            position: absolute;
+            background-color: $red_primary;
+            top: 0;
+            bottom: 0;
+            left: -1px;
+            width: 80%;        
+        }
+    }
+}
