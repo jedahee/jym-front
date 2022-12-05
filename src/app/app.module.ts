@@ -10,6 +10,7 @@ import { CalendarModule } from './calendar/calendar.module';
 import { ProfileModule } from './profile/profile.module';
 import { EventsModule } from './events/events.module';
 import { StatsModule } from './stats/stats.module';
+import { ChatModule } from './chat/chat.module';
 import { AppComponent } from './app.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { LogoutComponent } from './components/logout/logout.component';
@@ -36,7 +37,8 @@ import { AsideModule } from './aside/aside.module';
     AsideModule,
     ProfileModule,
     EventsModule,
-    StatsModule
+    StatsModule,
+    ChatModule,
   ],
   providers: [
       {

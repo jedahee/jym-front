@@ -42,6 +42,10 @@ export class EventsService {
     return this.http.get<any>(this.url + 'getCalendarEvents');
   }
 
+  getEventsUsed() {
+    return this.http.get<any>(this.url + 'eventsMoreUsed');
+  }
+
   delCalendarEvent(id: number) {
     return this.http.delete<any>(this.url + 'delCalendarEvent/' + id);
   }

@@ -1,0 +1,23 @@
+<article class="article-chat">
+    <div class="aside-container">
+        <app-aside></app-aside>
+    </div>
+    <span #error_msg_ref class="popup error-msg"></span>
+
+    <section class="chat-container">
+        <header>
+            <img src="{{path_img}}" class="img-profile">
+            <p class="username">{{other_user.name}}</p>
+        </header>
+        <main>
+            <p *ngFor="let msg of msgArr" class="msg {{ msg.username == user.name && 'right' }}">{{msg.message}}</p>
+            
+        </main>
+        <footer>
+            <textarea placeholder="Escribeme lo que quieras..." class="textarea-message" [(ngModel)]="msg_text" (keypress)="sendMsg($event)"></textarea>
+            <button class="btn" [disabled]="msg_text == ''" (click)="sendMsgClick()">
+                <div class="icon send-icon"></div>
+            </button>
+        </footer>
+    </section>
+</article>

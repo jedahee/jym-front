@@ -1,0 +1,142 @@
+.article-chat {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    .aside-container {
+        height: 100vh;
+        width: 20%;
+    }
+
+    .chat-container {
+        width: 100%;
+        padding: 2rem;
+        overflow: hidden;
+        background-image: url(../../assets/img/pattern.jpg);
+        backdrop-filter: blur(20px);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+
+        & > header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background-color: $red_primary;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 1.3rem 2rem;
+
+            & > .img-profile {
+                margin-right: 1rem;
+                width: 55px;
+                height: 55px;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+
+            & > .username {
+                font-size: 1.8em;
+                color: $white;
+                font-weight: 500;
+            }
+        }
+
+        & > main {
+            overflow-y: auto;
+            width: 100%;
+            position: absolute;
+            right: 0;
+            left: 0;
+            bottom: 91px;
+            top: 96px;
+
+            .msg {
+                background-color: $red_primary;
+                padding: .5rem .7rem;
+                border-radius: 10px;
+                color: $white;
+                letter-spacing: .5px;
+                font-weight: 400;
+                text-align: left;
+                margin: 1rem;
+                width: max-content;
+                max-width: 42%;
+            }
+
+            .msg.right {
+                margin-left: auto;
+                background-color: $blue;
+            }
+        }
+
+        & > footer {
+            z-index: 99;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.3rem 2rem;
+            background-color: $white;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: -10px 0px 100px 5px $gray;
+
+            .textarea-message {
+                border: 2px solid $red_secondary;
+                border-radius: 10px;
+                resize:none;
+                padding: .7rem 1rem;
+                color: $black;
+                letter-spacing: .5px;
+                font-weight: 400;
+                font-size: 1.1em;
+                width: 85%;
+                height: 50px;
+            }
+
+            & > button {
+                padding: 0 !important;
+                width: 65px !important;
+                height: 50px !important;
+                background-color: $soft_blue;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: background-color .2s ease, opacity .2s ease;
+
+                .send-icon {
+                    transform: translate(-1px, 2px) scale(.9);
+                    transition: transform .15s ease;
+                }
+            }
+
+            & > button:hover {
+                background-color: $blue;
+
+                .send-icon {
+                    transform: translate(-1px, 2px) scale(1.1);
+                }
+            }
+
+            .textarea-message::-webkit-scrollbar {
+                width: 0;
+                display: none;
+                visibility: hidden;
+            }
+        }
+    }
+}
