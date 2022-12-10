@@ -23,6 +23,7 @@ export class ProfileComponent implements OnInit {
   public path: string = "";
   public file: File = <File>{};
   public photos: String[] = [];
+  public isActive: string = "";
   public user_path_photo: string = "";
 
   constructor(private auth_service: AuthService, private rt: Router, private anim_service: AnimService) {
@@ -59,6 +60,11 @@ export class ProfileComponent implements OnInit {
         }, 3000);
       }
     });
+  }
+
+  
+  toggleAside(isActive: string) {
+    this.isActive = isActive;
   }
 
   updateName(id: number, name: string) {

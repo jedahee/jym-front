@@ -1,0 +1,28 @@
+@media screen and (max-width: 710px) {
+    .events-container {
+        padding: 1.5rem;
+        grid-template-areas: "details"
+                             "events"
+                             "buttons" 
+                             "buttons" !important;
+        .events {
+            padding-right: 0 !important;
+            padding-bottom: 1.5rem;
+            border: none !important;
+        }
+
+        .buttons button:nth-child(1) {
+            margin-right: .5rem !important;
+        }
+
+        .buttons button:nth-child(2) {
+            margin-left: .5rem !important;
+        }
+
+        .input-event {
+            width: 55%;
+        }
+    }
+
+
+}

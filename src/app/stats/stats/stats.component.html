@@ -1,9 +1,13 @@
 <article class="article-stats">
-    <div class="aside-container">
+    <div class="aside-container {{isActive}}">
         <app-aside></app-aside>
     </div>
     <span #error_msg_ref class="popup error-msg"></span>
     <span #success_msg_ref class="popup success-msg"></span>
+
+    <app-menu-hamburguer (toggleAside)="toggleAside($event)"></app-menu-hamburguer>
+
+
 
     <section class="stats-container">
         <div class="div-1">

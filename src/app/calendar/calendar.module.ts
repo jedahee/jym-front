@@ -4,7 +4,7 @@ import { AsideModule } from '../aside/aside.module';
 import { CalendarComponent } from './calendar/calendar.component';
 import { FormsModule } from '@angular/forms';
 import { EventsModule } from '../events/events.module';
-
+import { MenuMobileModule } from '../menu-mobile/menu-mobile.module';
 @NgModule({
   declarations: [
     CalendarComponent,
@@ -13,7 +13,8 @@ import { EventsModule } from '../events/events.module';
     CommonModule,
     AsideModule,
     FormsModule,
-    EventsModule
+    EventsModule,
+    MenuMobileModule
   ]
 })
 export class CalendarModule { }

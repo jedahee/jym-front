@@ -15,7 +15,7 @@ import { AppComponent } from './app.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { LogoutComponent } from './components/logout/logout.component';
 import { AsideModule } from './aside/aside.module';
-
+import { MenuMobileModule } from './menu-mobile/menu-mobile.module';
 @NgModule({
   
   declarations: [
@@ -39,6 +39,7 @@ import { AsideModule } from './aside/aside.module';
     EventsModule,
     StatsModule,
     ChatModule,
+    MenuMobileModule
   ],
   providers: [
       {

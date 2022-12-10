@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './profile/profile.component';
 import { AsideModule } from '../aside/aside.module';
-
+import { MenuMobileModule } from '../menu-mobile/menu-mobile.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,8 @@ import { AsideModule } from '../aside/aside.module';
   imports: [
     CommonModule,
     FormsModule,
-    AsideModule
+    AsideModule,
+    MenuMobileModule
   ]
 })
 export class ProfileModule { }

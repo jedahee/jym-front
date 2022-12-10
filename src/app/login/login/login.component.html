@@ -6,7 +6,8 @@
     </article>
     
     <article class="main-login__art main-login__art2">
-        <h1>Iniciar sesión</h1>
+        <h1 class="title_pc">Iniciar sesión</h1>
+        <h1 class="title_mobile">JyM</h1>
         <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
             <div class="input-container">
                 <div class="icon user-solid-icon"></div>
@@ -20,4 +21,7 @@
             <input [disabled]="!loginForm.valid" class="btn btn-primary" type="submit" value="Entrar">
         </form>
     </article>
+
+    <img class="w1" src="../../../assets/img/wave-1.svg">
+    <img class="w2" src="../../../assets/img/wave-2.svg">
 </main>

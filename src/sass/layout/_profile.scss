@@ -1,0 +1,117 @@
+@media screen and (max-width: 1325px) {
+    .article-profile {
+        .art-profile__sect {
+            .profile__sect1{
+                column-gap: 2rem !important;
+                form {
+                    margin-left: 3rem;
+                    img {
+                        width: 85% ;
+                        min-width: 310px;
+                    }
+                    .photo__btn {
+                        width: 85% ;
+                        min-width: 310px;
+                    }
+                }         
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1070px) {
+    .article-profile {
+        .art-profile__sect {
+            .profile__sect1{
+                transform: translateX(0px);
+                grid-template-columns: 100%;
+
+                .photo__btn, img {
+                    width: 50% !important;
+                }
+
+                form {
+                    margin-left: 0rem;
+                }
+
+                &>section {
+                    width: 90%;
+                    textarea {
+                        padding-bottom: 1.5rem;
+                        margin-top: 3rem;
+                        font-size: 3.2em;
+                        height: 100px;
+                    }
+
+                    .btn {
+                        width: 55%;
+                        min-width: 350px;
+                        margin-bottom: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 710px) {
+    .article-profile {
+        .art-profile__sect {
+
+            overflow-x: hidden !important;
+        }
+        
+    } 
+}
+
+@media screen and (max-width: 470px) {
+    .article-profile {
+        .art-profile__sect {
+            overflow-x: hidden !important;
+            
+            .profile__sect1{
+                
+                
+                .photo__btn, img {
+                    min-height: inherit !important;
+                    min-width: inherit !important;
+                    width: 100% !important;
+                }
+
+                .photo {
+                    min-width: 272px;
+                }
+
+                img {height: 250px;}
+
+                &>section {
+                    width: 100%;
+                    textarea {
+                        padding-bottom: 1.5rem;
+                        margin-top: 3rem;
+                        font-size: 2.8em;
+                        height: 110px;
+                    }
+
+                    .btn {
+                        width: 55%;
+                        min-width: 300px !important;
+                        margin-bottom: 1rem;
+                    }
+                }
+            }
+            .profile__sect2 {
+                padding-left: 0;
+            }
+
+            .profile__sect2 h2 {
+                text-align: center;
+            }
+            
+            .old_pic_container {
+                justify-items: center !important;
+            }
+        }
+        
+    } 
+}

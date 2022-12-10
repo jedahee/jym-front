@@ -14,10 +14,12 @@
     & > .icon {
         margin-right: .2rem;
         margin-left: 1rem;
+        z-index: 5;
     }
 
     & > span {
         color: $white;
+        z-index: 5;
         font-size: 1.2em;
         letter-spacing: 1.5px;
         font-weight: 400;
@@ -30,7 +32,7 @@
     position: absolute;
     width: 63%;
     height: 100%;
-    z-index: 0;
+    z-index: 4;
     border-radius: 13px;
     background-color: $red_primary;
     transition: width .2s .05s ease;

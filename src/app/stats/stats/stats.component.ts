@@ -25,6 +25,7 @@ export class StatsComponent implements OnInit {
   public total_events_punct: number = 0;
   public user: User = <User>{};
   public events_stats: any[] = [];
+  public isActive: string = "";
   public url: String = environment.URL;
 
   constructor(private e_service: EventsService, private calendar_service: CalendarService, private auth_service: AuthService, private rt: Router, private anim_service: AnimService) { 
@@ -52,6 +53,10 @@ export class StatsComponent implements OnInit {
     });
 
   
+  }
+
+  toggleAside(isActive: string) {
+    this.isActive = isActive;
   }
 
   calculateDays() {

@@ -33,7 +33,7 @@ export class CalendarComponent implements OnInit {
   public modelYear: number = -1;
   public months: string[] = [];
   public eventsCompleted: any[] = [];
-  //public eventsCompletedFiltered: any[] = [];
+  public isActive: string = "";
   public eventsCompletedToShow: any = []; 
   public years_available: number[] = [];
   public INIT_YEAR: number = 2021;
@@ -105,6 +105,10 @@ export class CalendarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  toggleAside(isActive: string) {
+    this.isActive = isActive;
   }
 
   addEvent(event:any) {

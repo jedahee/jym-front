@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ChatComponent } from './chat/chat.component';
 import { AsideModule } from '../aside/aside.module';
 import { FormsModule } from '@angular/forms';
-
+import { MenuMobileModule } from '../menu-mobile/menu-mobile.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AsideModule,
-    FormsModule
+    FormsModule,
+    MenuMobileModule
   ]
 })
 export class ChatModule { }

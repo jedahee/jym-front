@@ -1,0 +1,47 @@
+
+@media screen and (max-width: 860px) {
+    .stats-container {
+        h1 {
+            font-size: 2.5em !important;        
+            margin-top: 1.5rem;
+        }
+    }
+    
+}
+
+@media screen and (max-width: 590px) {
+    .stats-container {
+        .bar {
+            margin: 0 1rem !important;
+        }
+
+        .icon {
+            min-width: 40px;
+            min-height: 40px;
+        }
+
+        .event-name-stat {
+            font-size: 14px;
+            min-width: 120px !important;
+            max-width: 120px !important;
+        }
+    }
+}
+
+@media screen and (max-width: 410px) {
+    .stats-container {
+        .punct-por {
+            display: none;
+        }
+
+        .event-stat {
+            width: 95% !important;
+        }
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .stats-container {
+        padding: 1rem !important;
+    }
+}

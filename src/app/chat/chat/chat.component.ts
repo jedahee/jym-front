@@ -24,6 +24,7 @@ export class ChatComponent implements OnInit {
   public msg_text: String = "";
   public path_img: String = "";
   public msgArr: any[] = [];
+  public isActive: string = "";
 
   constructor(private chat_service: ChatService, private auth_service: AuthService, private rt: Router, private anim_service: AnimService) {
     this.token = localStorage.getItem("token_jym");
@@ -71,6 +72,10 @@ export class ChatComponent implements OnInit {
     });
 
 
+  }
+  
+  toggleAside(isActive: string) {
+    this.isActive = isActive;
   }
 
   sendMsg(event:any) {

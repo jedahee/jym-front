@@ -23,6 +23,7 @@ export class GalleryComponent implements OnInit {
   public user: User = <User>{};
   public otherUserPathImg: string = "";
   public pictures: Gallery[] = [];
+  public isActive: string = "";
   public url: String = environment.URL;
 
   constructor(private auth_service: AuthService, private rt: Router, private anim_service: AnimService, private gallery_service: GalleryService) {
@@ -70,6 +71,10 @@ export class GalleryComponent implements OnInit {
       }
     });
 
+  }
+
+  toggleAside(isActive: string) {
+    this.isActive = isActive;
   }
 
   uploadPicture(event: any) {

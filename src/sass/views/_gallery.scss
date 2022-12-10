@@ -14,17 +14,23 @@
         width: 20%;
     }
 
+
     .pictures-container {
         width: 100%;
         padding: 2rem;
         display: grid;
-        grid-template-columns: repeat(4, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         grid-auto-rows: 340px;
         grid-gap: 2rem;
-        overflow: auto;
+        overflow-y: auto;
         gap: 2rem;
+        overflow-x: hidden;
+        transition: all .3s ease;
+
 
         .photo {
+            
+            transition: all .3s ease;
             background-position: center;
             background-size: cover;
             box-shadow: 0 0 20px 2px #dadadabb;

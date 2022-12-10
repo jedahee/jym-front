@@ -1,9 +1,10 @@
 <article class="article-calendar">
-    <div class="aside-container">
+    <div class="aside-container {{ isActive }}">
         <app-aside></app-aside>
     </div>
     <span #error_msg_ref class="popup error-msg"></span>
     <span #success_msg_ref class="popup success-msg"></span>
+    <app-menu-hamburguer (toggleAside)="toggleAside($event)"></app-menu-hamburguer>
 
     <section class="calendar-container">
         <header class="header__calendar">
@@ -20,103 +21,16 @@
                 <option *ngFor="let year of years_available" [selected]="actualYear == modelYear" [value]="year" [disabled]="month_no > actualMonth_no || month_no < INIT_MONTH">{{year}}</option>
             </select>
         </header>
-        <div class="body__calendar">
-            <div *ngFor="let day of days_of_month" #dayContainer (click)="setDateSelected(day)" class="day-container {{ (modelYear == actualYear && month_no == actualMonth_no && day > actualDay) && 'disable-day'}} {{ (modelYear == INIT_YEAR && month_no == INIT_MONTH && day < INIT_DAY) && 'disable-day'}} {{modelYear == actualYear && month_no == actualMonth_no && day == actualDay && 'fill-actual-day'}}">
-                <span class="day-no">{{day}}</span>
-                <div *ngIf="checkDay(day)[0] == 3" class='emoji-day happy'></div>
-                <div *ngIf="checkDay(day)[0] == 2" class='emoji-day regular'></div>
-                <div *ngIf="checkDay(day)[0] == 1" class='emoji-day sad'></div>
+        <div class="overflow-calendar">
+            <div class="body__calendar">
+                <div *ngFor="let day of days_of_month" #dayContainer (click)="setDateSelected(day)" class="day-container {{ (modelYear == actualYear && month_no == actualMonth_no && day > actualDay) && 'disable-day'}} {{ (modelYear == INIT_YEAR && month_no == INIT_MONTH && day < INIT_DAY) && 'disable-day'}} {{modelYear == actualYear && month_no == actualMonth_no && day == actualDay && 'fill-actual-day'}}">
+                    <span class="day-no">{{day}}</span>
+                    <div *ngIf="checkDay(day)[0] == 3" class='emoji-day happy'></div>
+                    <div *ngIf="checkDay(day)[0] == 2" class='emoji-day regular'></div>
+                    <div *ngIf="checkDay(day)[0] == 1" class='emoji-day sad'></div>
+                </div>
+                
             </div>
-            <!--<div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">2</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">3</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">4</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">5</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">6</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">7</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">8</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">9</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">10</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">11</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">12</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">13</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">14</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">15</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">16</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">17</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">18</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">19</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">20</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">21</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">22</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">23</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">24</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">25</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">26</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">27</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">28</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">29</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">30</span>
-            </div>
-            <div #dayContainer (click)="toggleEventContainer('open')" class="day-container">
-                <span class="day-no">31</span>
-            </div>-->
         </div>  
 
         <section class="events-container {{ !isEventContainerHidden && 'hidden'}}">

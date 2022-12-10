@@ -1,7 +1,9 @@
+
+
 .body__calendar {
     display: grid;
     width: 100%;
-    height: calc(100% - 150px);
+    min-height: 650px;
     grid-template-columns: repeat(7, 1fr);
     gap: 2px;
 
@@ -148,4 +150,11 @@
             color: $black;
         }
     }
+}
+
+.overflow-calendar {
+    width: 100%;
+    height: calc(100% - 150px);
+    overflow-y: auto;
+    max-height: 650px;
 }

@@ -1,10 +1,11 @@
 <article class="article-gallery">
-    <div class="aside-container">
+    <div class="aside-container {{isActive}}">
         <app-aside></app-aside>
     </div>
     <span #error_msg_ref class="popup error-msg">{{error_msg}}</span>
-    
+    <app-menu-hamburguer (toggleAside)="toggleAside($event)"></app-menu-hamburguer>
     <section class="pictures-container">
+
         <section class="photo" *ngFor="let photo of pictures" style="background-image: url({{url}}{{photo.path}})">
             <div class="icon trash-icon" (click)="removePhoto(photo.id)"></div>
 
