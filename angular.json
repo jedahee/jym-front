@@ -72,12 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "jym-front:build:production",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "jym-front:build:production"
             },
             "development": {
-              "browserTarget": "jym-front:build:development",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "jym-front:build:development"
             }
           },
           "defaultConfiguration": "development"
