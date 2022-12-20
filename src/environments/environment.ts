@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  API_URL: 'https://www.jym-back.es/api/',
-  URL: 'https://www.jym-back.es'
+  API_URL: 'http://www.jym-back.es/api/',
+  URL: 'http://www.jym-back.es'
   
 };
 
