@@ -115,3 +115,10 @@
         
     } 
 }
+
+@media screen and (max-width: 400px) {
+    .article-profile .art-profile__sect .profile__sect2 .old_pic_container {
+        margin-bottom: 2em;
+        padding-bottom: 2em;
+    }
+}
