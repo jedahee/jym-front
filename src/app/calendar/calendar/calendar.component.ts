@@ -172,7 +172,6 @@ export class CalendarComponent implements OnInit {
     this.e_service.addCalendarEvent(id, this.date_selected).subscribe(data => {
 
       this.eventsCompleted.push(data.calendar_event);
-      console.log(this.eventsCompleted);
       this.filterEventsCompletedArr();
 
     }, error => {
