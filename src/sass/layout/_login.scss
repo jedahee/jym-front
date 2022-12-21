@@ -43,6 +43,11 @@
     .main-login__art2 > form {
         width: 75% !important;
     }
+
+    .main-login {
+        max-height: 100vh !important;
+        overflow-y: hidden;
+    }
 }
 
 @media screen and (max-width: 330px) {
