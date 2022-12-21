@@ -88,7 +88,7 @@ export class ChatComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    Pusher.logToConsole = true;
+    Pusher.logToConsole = false;
 
     var pusher = new Pusher('bffc095394f2b42eef63', {
       cluster: 'eu'
