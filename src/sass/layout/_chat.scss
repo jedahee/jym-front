@@ -48,6 +48,10 @@
 
 @media screen and (max-width: 400px) {
     .article-chat .chat-container > footer {
-        bottom: 3em !important;
+        bottom: 4em !important;
+
+        textarea::placeholder {
+            width: max-content !important;
+        }
     }
 }
