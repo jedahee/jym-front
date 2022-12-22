@@ -62,6 +62,8 @@ export class EventsComponent implements OnInit {
         }
       });
     }
+
+    return false;
   }
 
   delEvent(id: number) {
