@@ -63,6 +63,10 @@
                 padding: .5rem .7rem;
                 border-radius: 10px;
                 color: $white;
+                white-space: pre-wrap;      /* CSS3 */   
+                white-space: -moz-pre-wrap; /* Firefox */    
+                white-space: -o-pre-wrap;   /* Opera 7 */    
+                word-wrap: break-word;      /* IE */
                 letter-spacing: .5px;
                 font-weight: 400;
                 text-align: left;
