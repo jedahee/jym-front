@@ -95,7 +95,7 @@ export class GalleryComponent implements OnInit {
 
   removePhoto(id: number) {
     this.gallery_service.deletePhoto(id).subscribe(data => {
-      this.pictures = this.pictures.filter(pic => pic.id != id);
+      this.pictures = this.pictures.filter(pic => pic.id == id);
     }, error => {
       this.anim_service.popupAnim(this.error_msg_ref, "No se ha podido borrar la foto");
     });
