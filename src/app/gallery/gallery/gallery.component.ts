@@ -25,7 +25,6 @@ export class GalleryComponent implements OnInit {
   public pictures: Gallery[] = [];
   public isActive: string = "";
   public url: String = environment.URL;
-  public error:any = ""
 
   constructor(private auth_service: AuthService, private rt: Router, private anim_service: AnimService, private gallery_service: GalleryService) {
     this.token = localStorage.getItem("token_jym");
@@ -85,7 +84,6 @@ export class GalleryComponent implements OnInit {
       this.gallery_service.uploadPicture(this.file).subscribe(data => {
         this.pictures.push(data.gallery);
       }, error => {
-        this.error = JSON.stringify(error);
       });
     } 
   }

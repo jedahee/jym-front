@@ -5,7 +5,6 @@
     <span #error_msg_ref class="popup error-msg">{{error_msg}}</span>
     <app-menu-hamburguer (toggleAside)="toggleAside($event)"></app-menu-hamburguer>
     <section class="pictures-container">
-        <p>{{error}}</p>
         <section class="photo" *ngFor="let photo of pictures" style="background-image: url({{url}}{{photo.path}})">
             <div class="icon trash-icon" (click)="removePhoto(photo.id)"></div>
 
