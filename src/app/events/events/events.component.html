@@ -11,7 +11,7 @@
     </div>
     
     <div class="icon plus-icon" (click)="setIsAddingEvent(true)" *ngIf="!isAddingEvent"></div>
-    <input class="event input-event" [value]="eventNameToAdd" [(ngModel)]="eventNameToAdd" *ngIf="isAddingEvent" (blur)="setIsAddingEvent(false)" (keydown)="addEvent($event)">
+    <input class="event input-event" [value]="eventNameToAdd" [(ngModel)]="eventNameToAdd" *ngIf="isAddingEvent" (blur)="setIsAddingEvent(false)" (input)="addEvent($event)">
 </div>
 <hr>
 <div class="event-c">
