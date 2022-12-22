@@ -10,8 +10,8 @@
         </div> 
     </div>
     
-    <div class="icon plus-icon" (click)="setIsAddingEvent(true)" *ngIf="!isAddingEvent"></div>
-    <input class="event input-event" [value]="eventNameToAdd" [(ngModel)]="eventNameToAdd" *ngIf="isAddingEvent" (blur)="setIsAddingEvent(false)" (keydown)="addEvent($event)">
+    <div class="icon plus-icon" (click)="setIsAddingEvent(true, 'icon')" *ngIf="!isAddingEvent"></div>
+    <input class="event input-event" [value]="eventNameToAdd" [(ngModel)]="eventNameToAdd" *ngIf="isAddingEvent" (blur)="setIsAddingEvent(false, 'input')" (keydown)="addEvent($event)">
     <div class="icon add-icon" (click)="addEventClick()" *ngIf="isAddingEvent"></div>
 
 </div>

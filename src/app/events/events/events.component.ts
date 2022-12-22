@@ -38,8 +38,9 @@ export class EventsComponent implements OnInit {
   }
 
 
-  setIsAddingEvent(value: boolean) {
-    this.isAddingEvent = value;
+  setIsAddingEvent(value: boolean, name: string) {
+    if (name == "icon" || (name == "input" && window.innerWidth > 400))
+      this.isAddingEvent = value;
   }
   
   addEvent(e:any) {
@@ -48,7 +49,7 @@ export class EventsComponent implements OnInit {
       this.e_service.addEvent(this.eventNameToAdd).subscribe(data => {
         if (this.isDeletedAnyEvent)
           this.events.push(data.event);
-        this.setIsAddingEvent(false);
+        this.setIsAddingEvent(false, "icon");
         this.eventNameToAdd = "";
         this.addEventEmitter.emit(data.event);
 
@@ -72,11 +73,9 @@ export class EventsComponent implements OnInit {
   addEventClick() {
       
     this.e_service.addEvent(this.eventNameToAdd).subscribe(data => {
-      console.log("llega")
       if (this.isDeletedAnyEvent)
         this.events.push(data.event);
-        console.log("muestra")
-      this.setIsAddingEvent(false);
+      this.setIsAddingEvent(false, "icon");
       this.eventNameToAdd = "";
       this.addEventEmitter.emit(data.event);
 
