@@ -44,6 +44,7 @@ export class EventsComponent implements OnInit {
   
   addEvent(e:any) {
     if ((e.key.toLowerCase() == 'enter' && e.code.toLowerCase() == 'enter') || (e.code.toLowerCase() == 'period')) {
+      
       this.e_service.addEvent(this.eventNameToAdd).subscribe(data => {
         if (this.isDeletedAnyEvent)
           this.events.push(data.event);
@@ -61,9 +62,11 @@ export class EventsComponent implements OnInit {
           this.anim_service.popupAnim(this.error_msg_ref, error.msg || error.message);
         }
       });
+      
+      return false;
     }
+    return true;
 
-    return false;
   }
 
   delEvent(id: number) {
