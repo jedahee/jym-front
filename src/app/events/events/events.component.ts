@@ -72,9 +72,11 @@ export class EventsComponent implements OnInit {
   addEventClick() {
       
     this.e_service.addEvent(this.eventNameToAdd).subscribe(data => {
+      console.log("llega")
       if (this.isDeletedAnyEvent)
         this.events.push(data.event);
-      this.setIsAddingEvent(true);
+        console.log("muestra")
+      this.setIsAddingEvent(false);
       this.eventNameToAdd = "";
       this.addEventEmitter.emit(data.event);
 
