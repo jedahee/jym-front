@@ -4,7 +4,7 @@
 
 <div class="event-c">
     <div class="event" *ngFor="let event of events" (click)="selectEvent($event, event.id)">
-        {{event.name}}
+        <p class="pointer-events-none">{{event.name}}</p>
         <div class="trash-container">
             <div class="icon trash-icon" (click)="delEvent(event.id)"></div>
         </div> 
@@ -18,7 +18,7 @@
 
     <div class="event completed {{event_c.date != date_selected && 'hidden'}}" *ngFor="let event_c of eventsCompleted" (click)="delCalendarEvent(event_c.id)">
         
-        <p>{{event_c.event.name}}</p>
+        <p class="pointer-events-none">{{event_c.event.name}}</p>
         <div class="bg-icon">
             <div class="icon check-icon"></div>
         </div>
