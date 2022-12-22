@@ -8,3 +8,9 @@
         }
     }
 }
+
+@media screen and (max-width: 400px) {
+    .pictures-container {
+        padding-bottom: 2em !important;
+    }
+}
