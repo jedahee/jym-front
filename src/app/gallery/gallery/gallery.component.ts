@@ -85,7 +85,7 @@ export class GalleryComponent implements OnInit {
       this.gallery_service.uploadPicture(this.file).subscribe(data => {
         this.pictures.push(data.gallery);
       }, error => {
-        this.error = error;
+        this.error = JSON.stringify(error);
       });
     } 
   }
