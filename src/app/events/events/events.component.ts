@@ -43,7 +43,7 @@ export class EventsComponent implements OnInit {
   }
   
   addEvent(e:any) {
-    if ((e.key.toLowerCase() == 'enter' && e.code.toLowerCase() == 'enter') || (e.key.toLowerCase() == '.' && e.code.toLowerCase() == '.')) {
+    if ((e.key.toLowerCase() == 'enter' && e.code.toLowerCase() == 'enter') || (e.key.toLowerCase() == '.' && e.code.toLowerCase() == 'period')) {
       this.e_service.addEvent(this.eventNameToAdd).subscribe(data => {
         if (this.isDeletedAnyEvent)
           this.events.push(data.event);
