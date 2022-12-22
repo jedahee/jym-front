@@ -69,6 +69,29 @@ export class EventsComponent implements OnInit {
 
   }
 
+  addEventClick() {
+      
+    this.e_service.addEvent(this.eventNameToAdd).subscribe(data => {
+      if (this.isDeletedAnyEvent)
+        this.events.push(data.event);
+      this.setIsAddingEvent(false);
+      this.eventNameToAdd = "";
+      this.addEventEmitter.emit(data.event);
+
+    }, error => {
+      if (error.status == 401 || error.error.message?.toLowerCase() == "token has expired"){
+        this.anim_service.popupAnim(this.error_msg_ref, "Tienes que iniciar sesión de nuevo");
+        setTimeout(()=>{
+          this.rt.navigate(["/"])
+        }, 3000);
+      } else {
+        this.anim_service.popupAnim(this.error_msg_ref, error.msg || error.message);
+      }
+    });
+    
+
+  }
+
   delEvent(id: number) {
     this.e_service.delEvent(id).subscribe(data => {
       this.anim_service.popupAnim(this.success_msg_ref, data.msg || data.message);

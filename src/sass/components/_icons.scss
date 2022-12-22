@@ -62,8 +62,12 @@
     background-image: url('../../assets/icon/arrow.svg');
 }
 
-.plus-icon {
+.plus-icon, .add-icon {
     background-image: url('../../assets/icon/plus.svg');
+}
+
+.add-icon {
+    display: none;
 }
 
 .check-icon {
