@@ -74,7 +74,7 @@ export class EventsComponent implements OnInit {
     this.e_service.addEvent(this.eventNameToAdd).subscribe(data => {
       if (this.isDeletedAnyEvent)
         this.events.push(data.event);
-      this.setIsAddingEvent(false);
+      this.setIsAddingEvent(true);
       this.eventNameToAdd = "";
       this.addEventEmitter.emit(data.event);
 
