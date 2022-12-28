@@ -3,15 +3,17 @@ import { CommonModule } from '@angular/common';
 import { AsideModule } from '../aside/aside.module';
 import { GalleryComponent } from './gallery/gallery.component';
 import { StarComponent } from '../components/star/star.component';
-
+import { MenuMobileModule } from '../menu-mobile/menu-mobile.module';
 @NgModule({
   declarations: [
     GalleryComponent,
-    StarComponent
+    StarComponent,
+    
   ],
   imports: [
     CommonModule,
-    AsideModule
+    AsideModule,
+    MenuMobileModule
   ],
   exports: [StarComponent],
 })

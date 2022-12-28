@@ -68,4 +68,7 @@ export class AuthService {
     return this.http.post<any>(this.url + 'setPhotoOld/' + id, data);
   }
 
+  getUserById(id: number) {
+    return this.http.get<any>(this.url + 'getUserById/' + id);
+  }
 }

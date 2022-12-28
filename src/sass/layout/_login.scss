@@ -1,0 +1,58 @@
+@media screen and (max-width: 1160px) {
+
+    .main-login__art2 {
+        width: 100% !important;
+        margin-top: -3rem;
+    } 
+
+    .main-login__art1 > img {
+        display: none;
+    }
+
+    .bg-login {
+        display: none;
+    }
+
+    .w1, .w2 {
+        display: block !important;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .title_mobile {
+        display: block !important;
+        font-size: 6.5em !important;
+        font-family: 'Pacifico';
+        color: $red_primary !important;
+
+    }
+
+    .title_pc {
+        display: none !important;
+    }
+
+    .main-login__art2 > form {
+        margin-top: -2rem;
+    }
+}
+
+@media screen and (max-width: 545px) {
+    .main-login__art2 > form {
+        width: 75% !important;
+    }
+
+    .main-login {
+        max-height: 100vh !important;
+        overflow-y: hidden;
+    }
+}
+
+@media screen and (max-width: 330px) {
+    .title_mobile {
+        font-size: 5.5em !important;
+
+    }
+}

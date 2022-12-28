@@ -10,12 +10,24 @@
     overflow: hidden;
 }
 
+.input-event {
+    border: none;
+    outline: none;
+    width: 30%;
+    font-size: 16px;
+}
+
 .event.completed {
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+}
+
+.event.completed.hidden {
+    display: none;
+    pointer-events: none;
 }
 
 .event.completed > p {

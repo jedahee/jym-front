@@ -1,0 +1,46 @@
+.article_page_not_found {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: -2.5rem;
+    }
+
+    & > div > p {
+        text-align: center;
+        font-family: 'Pacifico';
+        color: $red_primary;
+        font-weight: 500;
+    }
+
+    & > div > p:nth-child(1) {
+        font-size: 156px;
+    }
+
+    & > div > p:nth-child(2) {
+        font-size: 78px;
+        margin-top: -3rem;
+    }
+
+    .btn {
+        margin-top: 3rem;
+        padding: 1rem 5rem !important;
+    }
+
+    img {
+        position: absolute;
+        left: 0;
+        right: 0;
+        pointer-events: none;
+        z-index: -1;
+        bottom: 0;
+        width: 100%;
+        object-fit: cover;
+    }
+}

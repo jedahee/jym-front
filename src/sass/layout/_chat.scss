@@ -1,0 +1,61 @@
+@media screen and (max-width: 800px) {
+    .article-chat{
+        .chat-container {
+            
+            & > footer {
+                justify-content: space-between !important;
+                padding: 1.3rem 1rem;
+    
+                .textarea-message {
+                    margin-right: 1.3rem;
+                }
+            }
+        }
+
+        .hamburguer {
+            top: 22px !important;
+            right: 21px !important;
+        }
+    }
+
+}
+
+@media screen and (max-width: 550px) {
+    .article-chat{
+        .chat-container {
+            & > header {
+                border-bottom-left-radius: 15px;
+                border-bottom-right-radius: 15px;    
+            }
+
+            .username {
+                font-size: 1.5em !important;
+                padding-right: 3.5rem;
+            }
+
+            .img-profile {
+                margin-right: .8rem !important;
+                width: 48px !important;
+                height: 48px !important;
+            }
+        }
+    }
+
+    footer {
+        z-index: 4 !important;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .article-chat .chat-container > footer {
+        bottom: 3.45em !important;
+
+        textarea::placeholder {
+            width: max-content !important;
+        }
+    }
+
+    .chat-container main {
+        padding-bottom: 3em !important;
+    }
+}

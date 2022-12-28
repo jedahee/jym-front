@@ -1,0 +1,92 @@
+@media screen and (max-width: 1400px) {
+    .header__calendar .month-container{
+        .month {
+            font-size: 1.8em !important;
+        }
+
+        min-width: 275px !important;
+    } 
+
+    .body__calendar {
+        .day-container {
+            .emoji-day {
+                top: 60% !important;
+                left: 71% !important;
+                width: 42px !important;
+                height: 42px !important;
+            }
+
+            .day-no {
+                font-size: 13px !important;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .day-container:hover::after {
+        width: 160% !important;
+        height: 160% !important;
+    }
+
+    .day-container::after {
+        left: 1rem !important;
+    }
+}
+
+@media screen and (max-width: 792px) {
+    .article-calendar .calendar-container {
+        padding: 1rem !important;
+    }
+
+    .body__calendar .day-container {
+        .emoji-day {
+            top: 70% !important;
+            left: 64% !important;
+            width: 40px !important;
+            height: 40px !important;
+        }
+
+    }
+
+    .body__calendar {
+        height: 95% !important;
+    }
+}
+
+@media screen and (max-width: 792px) {
+
+    .body__calendar .day-container {
+        .emoji-day {
+            top: 70% !important;
+            left: 50% !important;
+        }
+
+        .day-no {
+            min-width: 3.5ch !important;
+        }
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .header__calendar {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem;
+    }
+
+    .article-calendar .calendar-container {
+        padding: 0rem !important;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .body__calendar {
+        padding-bottom: 8em;
+    }
+
+    .add-icon {
+        display: flex;
+    }
+}

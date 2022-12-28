@@ -17,6 +17,7 @@ export class LogoutComponent implements OnInit {
   public token: string | null = "";
   public error_msg: String = "";
   public user: User = <User>{};
+  public isActive: string = "";
 
   constructor(private anim_service: AnimService, private auth_service: AuthService, private rt: Router) {
     this.token = localStorage.getItem("token_jym");
@@ -38,6 +39,9 @@ export class LogoutComponent implements OnInit {
         }, 3000);
       }
     });
+  }
+  toggleAside(isActive: string) {
+    this.isActive = isActive;
   }
 
   logout() {

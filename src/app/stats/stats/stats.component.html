@@ -1,0 +1,64 @@
+<article class="article-stats">
+    <div class="aside-container {{isActive}}">
+        <app-aside></app-aside>
+    </div>
+    <span #error_msg_ref class="popup error-msg"></span>
+    <span #success_msg_ref class="popup success-msg"></span>
+
+    <app-menu-hamburguer (toggleAside)="toggleAside($event)"></app-menu-hamburguer>
+
+
+
+    <section class="stats-container">
+        <div class="div-1">
+            <h1>Los mejores planes</h1>
+
+            <div class="events-stats">
+
+                <div class="event-stat" *ngFor="let es of events_stats">
+                    <p class="event-name-stat">{{es.name}}</p>
+                    <div class="bar">
+                        <div class="pg-bar" [style.width]='((es.num_times*100) / total_events_punct) + "%"'></div>
+                    </div>
+                    <h3 class="punct">{{es.num_times}}</h3>
+                    <h4 class="punct-por">( {{ es.num_times != 0 ? ((es.num_times*100) / total_events_punct).toFixed(2) : es.num_times }} %)</h4>
+                </div>
+
+            </div>
+        </div>
+        <div class="div-2">
+            <h1>Nuestro día a día</h1>
+
+            <div class="days-stats">
+                
+                <div class="day-stat">
+                    <div class="icon smile-icon"></div>
+                    <div class="big-bar">
+                        <div class="pg-bar" [style.width]='((smile_punct * 100) / total_punct) + "%"'></div>
+                    </div>
+                    <h3 class="punct">{{smile_punct}}</h3>
+                    <h4 class="punct-por">( {{ smile_punct != 0 ? ((smile_punct * 100) / total_punct).toFixed(2) : smile_punct }} %)</h4>
+                </div>
+
+                <div class="day-stat">
+                    <div class="icon meh-icon"></div> 
+                    <div class="big-bar">
+                        <div class="pg-bar" [style.width]='((meh_punct * 100) / total_punct) + "%"'></div>
+                    </div>
+                    <h3 class="punct">{{meh_punct}}</h3>
+                    <h4 class="punct-por">({{ meh_punct != 0 ? ((meh_punct * 100) / total_punct).toFixed(2) : meh_punct }}%)</h4>
+                </div>
+
+                <div class="day-stat">
+                    <div class="icon sad-icon"></div>
+                    <div class="big-bar">
+                        <div class="pg-bar" [style.width]='((sad_punct * 100) / total_punct) + "%"'></div>
+                    </div>
+                    <h3 class="punct">{{sad_punct}}</h3>
+                    <h4 class="punct-por">({{ sad_punct != 0 ? ((sad_punct * 100) / total_punct).toFixed(2) : sad_punct }}%)</h4>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</article>

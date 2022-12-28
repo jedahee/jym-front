@@ -7,6 +7,8 @@ import { ProfileComponent } from './profile/profile/profile.component';
 import { EventsComponent } from './events/events/events.component';
 import { CalendarComponent } from './calendar/calendar/calendar.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { StatsComponent } from './stats/stats/stats.component';
+import { ChatComponent } from './chat/chat/chat.component';
 
 const routes: Routes = [
   {
@@ -23,11 +25,11 @@ const routes: Routes = [
   },
   {
     path: "chat",
-    component: GalleryComponent
+    component: ChatComponent
   },
   {
     path: "stats",
-    component: EventsComponent
+    component: StatsComponent
   },
   {
     path: "profile",

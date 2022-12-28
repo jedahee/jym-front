@@ -10,17 +10,13 @@
 }
 
 .btn-primary {
+    min-width: max-content;
     background-color: $blue;
 }
 
 .btn-primary:hover {
     background-color: $blue_hover;
     box-shadow: 0px 10px 50px 0px #27e4b53b;
-}
-
-.btn:disabled {
-    opacity: .5;
-    pointer-events: none;
 }
 
 .form-file {
@@ -70,7 +66,7 @@
     font-size: 1.1em;
     cursor: pointer;
     font-weight: 400;
-    transition: background-color .2s ease, border .2s ease;
+    transition: background-color .2s ease, border .2s ease, opacity .2s ease;
 }
 
 .btn-soft-primary {
@@ -87,4 +83,9 @@
 
 .btn-soft-cancel:hover {
     background-color: #ffa69ea8;
+}
+
+.btn:disabled, .btn_soft:disabled {
+    opacity: .5;
+    pointer-events: none;
 }

@@ -12,6 +12,11 @@
             font-weight: 400;
             text-align: center;
             margin-bottom: 4rem;
+            color: $black;
+        }
+
+        .title_mobile {
+            display:none;
         }
     }
 
@@ -53,6 +58,10 @@
         min-width: 600px;
         position: absolute;
         z-index: -1;
+    }
+
+    .w1, .w2 {
+        display: none;
     }
 
 }

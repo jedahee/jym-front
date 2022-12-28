@@ -23,6 +23,7 @@ export class GalleryComponent implements OnInit {
   public user: User = <User>{};
   public otherUserPathImg: string = "";
   public pictures: Gallery[] = [];
+  public isActive: string = "";
   public url: String = environment.URL;
 
   constructor(private auth_service: AuthService, private rt: Router, private anim_service: AnimService, private gallery_service: GalleryService) {
@@ -62,7 +63,7 @@ export class GalleryComponent implements OnInit {
 
       this.getPictures();
     }, error => {
-      if (error.status == 401){
+      if (error.status == 401 || error.message.toLowerCase() == "token has expired"){
         this.anim_service.popupAnim(this.error_msg_ref, "Tienes que iniciar sesión de nuevo");
         setTimeout(()=>{
           this.rt.navigate(["/"])
@@ -72,12 +73,17 @@ export class GalleryComponent implements OnInit {
 
   }
 
+  toggleAside(isActive: string) {
+    this.isActive = isActive;
+  }
+
   uploadPicture(event: any) {
     this.file = event.target.files[0];
     
     if (this.file != undefined) {
       this.gallery_service.uploadPicture(this.file).subscribe(data => {
         this.pictures.push(data.gallery);
+      }, error => {
       });
     } 
   }
@@ -90,7 +96,6 @@ export class GalleryComponent implements OnInit {
 
   removePhoto(id: number) {
     this.gallery_service.deletePhoto(id).subscribe(data => {
-      console.log(data);
       this.pictures = this.pictures.filter(pic => pic.id != id);
     }, error => {
       this.anim_service.popupAnim(this.error_msg_ref, "No se ha podido borrar la foto");

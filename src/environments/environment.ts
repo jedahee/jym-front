@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://127.0.0.1:8000/api/',
-  URL: 'http://127.0.0.1:8000'
+  API_URL: 'https://www.jym-back.es/api/',
+  URL: 'https://www.jym-back.es'
+  
 };
 
 /*

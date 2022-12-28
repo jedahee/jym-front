@@ -1,3 +1,29 @@
-<div class="aside-container">
-    <app-aside></app-aside>
+
+<span #error_msg_ref class="popup error-msg"></span>
+<span #success_msg_ref class="popup success-msg"></span>
+
+<div class="event-c">
+    <div class="event" *ngFor="let event of events" (click)="selectEvent($event, event.id)">
+        <p class="pointer-events-none">{{event.name}}</p>
+        <div class="trash-container">
+            <div class="icon trash-icon" (click)="delEvent(event.id)"></div>
+        </div> 
+    </div>
+    
+    <div class="icon plus-icon" (click)="setIsAddingEvent(true, 'icon')" *ngIf="!isAddingEvent"></div>
+    <input class="event input-event" [value]="eventNameToAdd" [(ngModel)]="eventNameToAdd" *ngIf="isAddingEvent" (blur)="setIsAddingEvent(false, 'input')" (keydown)="addEvent($event)">
+    <div class="icon add-icon" (click)="addEventClick()" *ngIf="isAddingEvent"></div>
+
+</div>
+<hr>
+<div class="event-c">
+
+    <div class="event completed {{event_c.date != date_selected && 'hidden'}}" *ngFor="let event_c of eventsCompleted" (click)="delCalendarEvent(event_c.id)">
+        
+        <p class="pointer-events-none">{{event_c.event.name}}</p>
+        <div class="bg-icon">
+            <div class="icon check-icon"></div>
+        </div>
+    </div>
+    
 </div>

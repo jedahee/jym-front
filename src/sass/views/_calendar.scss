@@ -29,7 +29,7 @@
             bottom: 0;
             right: 0;
             left: 0;
-            z-index: 99;
+            z-index: 3;
             background-color: $black;
             transition: transform .35s .1s ease-in-out;
             display: grid;
@@ -41,6 +41,7 @@
                 grid-area: events;
                 width: 100%;
                 max-width: 650px;
+                padding-right: 4rem;
                 
                 & > section {
                     max-height: 190px;
@@ -73,7 +74,7 @@
                         margin-right: 1rem;
                     }
 
-                    .plus-icon {
+                    .plus-icon, .add-icon {
                         cursor: pointer;
                     }
                 }
@@ -121,15 +122,15 @@
                         border-radius: 50%;
                     }
 
-                    .smile-icon:hover {
+                    .smile-icon:hover, .smile-icon.active {
                         background-color: $success_green;
                     }
 
-                    .meh-icon:hover {
+                    .meh-icon:hover, .meh-icon.active {
                         background-color: #efe222;
                     }
 
-                    .sad-icon:hover {
+                    .sad-icon:hover, .sad-icon.active {
                         background-color: $red_secondary;
                     }
                 }

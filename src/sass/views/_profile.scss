@@ -37,6 +37,7 @@
                 .photo__img {
                     width: 70%;
                     min-height: 310px;
+                    max-height: 380px;
                 }
 
                 .photo__btn {
@@ -88,7 +89,7 @@
                 display: grid;
                 justify-items: flex-start;
                 gap: 2rem;
-                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
                 grid-auto-rows: 175px;
 
                 .photo {
